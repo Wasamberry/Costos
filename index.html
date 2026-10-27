@@ -23,7 +23,8 @@ function dateCell(date){const old=stale(date);return '<span class="'+(old?'stale
 function dollarValue(){return Number(db.settings.dollarRate)||0}
 function usdArs(n,rate=dollarValue()){return rate>0?ars(n*rate):'—'}
 function field(label,id,type='text',value='',extra=''){return '<div class="field"><label for="'+id+'">'+label+'</label><input id="'+id+'" type="'+type+'" value="'+esc(value)+'" '+extra+'></div>'}
-function options(items,unit=false){return items.map((x,i)=>'<option value="'+i+'">'+esc(x.name)+(unit?' · '+esc(x.unit):'')+'</option>').join('')}\nfunction familySelect(id,value){const selected=FAMILIES.includes(String(value||'').toUpperCase())?String(value).toUpperCase():'OTROS';return '<div class="field"><label for="'+id+'">Familia</label><select id="'+id+'" required>'+FAMILIES.map(f=>'<option value="'+f+'" '+(selected===f?'selected':'')+'>'+f+'</option>').join('')+'</select></div>'}
+function options(items,unit=false){return items.map((x,i)=>'<option value="'+i+'">'+esc(x.name)+(unit?' · '+esc(x.unit):'')+'</option>').join('')}
+function familySelect(id,value){const selected=FAMILIES.includes(String(value||'').toUpperCase())?String(value).toUpperCase():'OTROS';return '<div class="field"><label for="'+id+'">Familia</label><select id="'+id+'" required>'+FAMILIES.map(f=>'<option value="'+f+'" '+(selected===f?'selected':'')+'>'+f+'</option>').join('')+'</select></div>'}
 function render(){
  document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));const root=document.getElementById('app');
  if(tab==='home'){
